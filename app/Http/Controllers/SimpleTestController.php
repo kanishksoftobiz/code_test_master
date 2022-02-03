@@ -23,8 +23,6 @@ class SimpleTestController extends Controller
      */
 
     public function read() {
-        // $data = UserData::orderBy('id')->get();
-        // return view('test', compact('user_color'));
         $data = UserData::all();
         return response()->json([
             'status'=>200,
@@ -39,12 +37,10 @@ class SimpleTestController extends Controller
         $data->name = $request->name;
         $data->color = $request->color;
         $data->save();
-        // return back()->with('test','Data Inserted Successfully');
     }
 
     public function delete($id) {
         $data = UserData::where('id', $id)->first();
         $data ->delete();
-        // return back()->with('test', 'Data Deleted Successfully');
     }
 }

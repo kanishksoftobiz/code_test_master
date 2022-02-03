@@ -1,11 +1,13 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { withFormik, FieldArray } from "formik";
+import axios from "axios";
+import * as Yup from "yup";
+
 import { redirectToSuccessPage } from "../services/Router";
 import { postData } from "../services/Form";
 import { incrementformviewcount } from "../services/Stats";
-import axios from "axios";
-import * as Yup from "yup";
+
 
 const TestForm = (props: any) => {
     const { values, handleSubmit, handleChange, errors } = props;
@@ -25,6 +27,14 @@ const TestForm = (props: any) => {
         }
         fetchMyAPI();
     }, []);
+
+    const onDelete = async (id: any) => {
+        await axios
+            .delete(`http://127.0.0.1:8000/delete/${id}`)
+            .catch((error) => console.log(error));
+        alert("Data Deleted");
+        window.location.reload();
+    };
 
     return (
         <React.Fragment>
@@ -122,9 +132,12 @@ const TestForm = (props: any) => {
                                     <td>{data.name}</td>
                                     <td>{data.color}</td>
                                     <td>
-                                    <button className="text-white bg-red-500 rounded p-2 px-4 hover:bg-red-600 font-bold">
-                                        Delete set
-                                    </button>
+                                        <button
+                                            className="text-white bg-red-500 rounded p-2 px-4 hover:bg-red-600 font-bold"
+                                            onClick={() => onDelete(data.id)}
+                                        >
+                                            Delete set
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
@@ -159,6 +172,7 @@ export default withFormik({
     handleSubmit: (values, { props }) => {
         // Post data to the backend
         postData(values);
+        window.location.reload();
 
         // Imaginary redirection on success
         redirectToSuccessPage();

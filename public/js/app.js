@@ -2103,10 +2103,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _services_Router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/Router */ "./resources/js/services/Router.ts");
-/* harmony import */ var _services_Form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/Form */ "./resources/js/services/Form.ts");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _services_Router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/Router */ "./resources/js/services/Router.ts");
+/* harmony import */ var _services_Form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/Form */ "./resources/js/services/Form.ts");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -2296,7 +2296,7 @@ var TestForm = function TestForm(props) {
             case 0:
               return [4
               /*yield*/
-              , axios__WEBPACK_IMPORTED_MODULE_5___default().get("http://127.0.0.1:8000/read").then(function (response) {
+              , axios__WEBPACK_IMPORTED_MODULE_3___default().get("http://127.0.0.1:8000/read").then(function (response) {
                 setDatas(response.data.datas);
               })];
 
@@ -2313,6 +2313,31 @@ var TestForm = function TestForm(props) {
 
     fetchMyAPI();
   }, []);
+
+  var onDelete = function onDelete(id) {
+    return __awaiter(void 0, void 0, void 0, function () {
+      return __generator(this, function (_a) {
+        switch (_a.label) {
+          case 0:
+            return [4
+            /*yield*/
+            , axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"]("http://127.0.0.1:8000/delete/".concat(id))["catch"](function (error) {
+              return console.log(error);
+            })];
+
+          case 1:
+            _a.sent();
+
+            alert("Data Deleted");
+            window.location.reload();
+            return [2
+            /*return*/
+            ];
+        }
+      });
+    });
+  };
+
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", __assign({
       method: "POST",
@@ -2396,7 +2421,10 @@ var TestForm = function TestForm(props) {
                   children: data.color
                 }, void 0), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
                   children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", __assign({
-                    className: "text-white bg-red-500 rounded p-2 px-4 hover:bg-red-600 font-bold"
+                    className: "text-white bg-red-500 rounded p-2 px-4 hover:bg-red-600 font-bold",
+                    onClick: function onClick() {
+                      return onDelete(data.id);
+                    }
                   }, {
                     children: "Delete set"
                   }), void 0)
@@ -2436,9 +2464,10 @@ var TestForm = function TestForm(props) {
   handleSubmit: function handleSubmit(values, _a) {
     var props = _a.props; // Post data to the backend
 
-    (0,_services_Form__WEBPACK_IMPORTED_MODULE_4__.postData)(values); // Imaginary redirection on success
+    (0,_services_Form__WEBPACK_IMPORTED_MODULE_5__.postData)(values);
+    window.location.reload(); // Imaginary redirection on success
 
-    (0,_services_Router__WEBPACK_IMPORTED_MODULE_3__.redirectToSuccessPage)();
+    (0,_services_Router__WEBPACK_IMPORTED_MODULE_4__.redirectToSuccessPage)();
   }
 })(TestForm));
 

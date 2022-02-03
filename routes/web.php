@@ -17,4 +17,4 @@ use App\Http\Controllers\SimpleTestController;
 Route::get('/', [\App\Http\Controllers\SimpleTestController::class, 'index']);
 Route::post('/store', [\App\Http\Controllers\SimpleTestController::class, 'store'])->name('user.color');
 Route::get('/read', [SimpleTestController::class, 'read']);
-Route::get('/delete/{id}', [SimpleTestController::class, 'delete']);
+Route::delete('/delete/{id}', [SimpleTestController::class, 'delete']);
