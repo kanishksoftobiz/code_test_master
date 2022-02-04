@@ -2338,6 +2338,29 @@ var TestForm = function TestForm(props) {
     });
   };
 
+  var submitSets = function submitSets() {
+    return __awaiter(void 0, void 0, void 0, function () {
+      return __generator(this, function (_a) {
+        switch (_a.label) {
+          case 0:
+            alert("Mail Sent...!");
+            return [4
+            /*yield*/
+            , axios__WEBPACK_IMPORTED_MODULE_3___default().get("http://127.0.0.1:8000/send-mail")["catch"](function (error) {
+              return console.log(error);
+            })];
+
+          case 1:
+            _a.sent();
+
+            return [2
+            /*return*/
+            ];
+        }
+      });
+    });
+  };
+
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", __assign({
       method: "POST",
@@ -2437,7 +2460,10 @@ var TestForm = function TestForm(props) {
         className: "px-4 py-5 sm:p-6"
       }, {
         children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", __assign({
-          className: "text-white bg-teal-500 rounded p-2 px-4 hover:bg-teal-600 font-bold"
+          className: "text-white bg-teal-500 rounded p-2 px-4 hover:bg-teal-600 font-bold",
+          onClick: function onClick() {
+            return submitSets();
+          }
         }, {
           children: "Submit sets"
         }), void 0)

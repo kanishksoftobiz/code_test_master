@@ -22,11 +22,12 @@ class SimpleTestController extends Controller
      * @return void
      */
 
-    public function read() {
+    public function read()
+    {
         $data = UserData::all();
         return response()->json([
-            'status'=>200,
-            'datas'=>$data
+            'status' => 200,
+            'datas' => $data
         ]);
     }
 
@@ -39,8 +40,19 @@ class SimpleTestController extends Controller
         $data->save();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $data = UserData::where('id', $id)->first();
-        $data ->delete();
+        $data->delete();
+    }
+
+    public function reademail()
+    {
+        $submittedData = UserData::all();
+        
+        Mail::send('emails.submitted', compact('submittedData'), function($message){
+            $message->to('kanishk17kumar@gmail.com', 'TestMail')->subject('Submitted data');
+        });
+        return view('emails.submitted', compact('submittedData'));
     }
 }

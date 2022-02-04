@@ -8,7 +8,6 @@ import { redirectToSuccessPage } from "../services/Router";
 import { postData } from "../services/Form";
 import { incrementformviewcount } from "../services/Stats";
 
-
 const TestForm = (props: any) => {
     const { values, handleSubmit, handleChange, errors } = props;
 
@@ -34,6 +33,13 @@ const TestForm = (props: any) => {
             .catch((error) => console.log(error));
         alert("Data Deleted");
         window.location.reload();
+    };
+
+    const submitSets = async () => {
+        alert("Mail Sent...!");
+        await axios
+            .get(`http://127.0.0.1:8000/send-mail`)
+            .catch((error) => console.log(error));
     };
 
     return (
@@ -145,7 +151,10 @@ const TestForm = (props: any) => {
                     </table>
                 </div>
                 <footer className="px-4 py-5 sm:p-6">
-                    <button className="text-white bg-teal-500 rounded p-2 px-4 hover:bg-teal-600 font-bold">
+                    <button
+                        className="text-white bg-teal-500 rounded p-2 px-4 hover:bg-teal-600 font-bold"
+                        onClick={() => submitSets()}
+                    >
                         Submit sets
                     </button>
                 </footer>

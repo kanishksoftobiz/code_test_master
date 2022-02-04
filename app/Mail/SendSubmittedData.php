@@ -2,17 +2,24 @@
 
 namespace App\Mail;
 
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
 
 class SendSubmittedData extends Mailable
 {
+    use Queueable, SerializesModels;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(protected $submittedData)
-    {}
+    public function __construct()
+    {
+        //
+    }
 
     /**
      * Build the message.
@@ -21,10 +28,6 @@ class SendSubmittedData extends Mailable
      */
     public function build()
     {
-        return $this
-            ->markdown('emails.submitted')
-            ->with([
-                'submittedData' => $this->submittedData
-            ]);
+        return $this->markdown('emails.submitted');
     }
 }
