@@ -48,10 +48,10 @@ class SimpleTestController extends Controller
 
     public function reademail()
     {
-        $submittedData = UserData::all();
+        $submittedData = UserData::all();        
         
         Mail::send('emails.submitted', compact('submittedData'), function($message){
-            $message->to('kanishk17kumar@gmail.com', 'TestMail')->subject('Submitted data');
+            $message->to('reciver email', 'TestMail')->subject('Submitted data');
         });
         return view('emails.submitted', compact('submittedData'));
     }
