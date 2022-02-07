@@ -2391,7 +2391,8 @@ var TestForm = function TestForm(props) {
                   onChange: handleChange
                 }, void 0), errors.name && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", __assign({
                   style: {
-                    color: 'red'
+                    color: "red",
+                    fontWeight: "bold"
                   }
                 }, {
                   children: errors.name
@@ -2404,7 +2405,8 @@ var TestForm = function TestForm(props) {
                   onChange: handleChange
                 }, void 0), errors.color && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", __assign({
                   style: {
-                    color: 'red'
+                    color: "red",
+                    fontWeight: "bold"
                   }
                 }, {
                   children: errors.color

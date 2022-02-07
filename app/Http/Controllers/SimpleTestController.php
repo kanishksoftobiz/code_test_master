@@ -50,7 +50,7 @@ class SimpleTestController extends Controller
     {
         $submittedData = UserData::all();     
         
-        Mail::to('reciver email')->send(new \App\Mail\SendSubmittedData($submittedData));
+        Mail::to(config('mail.reciver'))->send(new \App\Mail\SendSubmittedData($submittedData));
         dd("Mail Send Successfully...!");
     }
 }

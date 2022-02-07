@@ -80,7 +80,14 @@ const TestForm = (props: any) => {
                                         onChange={handleChange}
                                     />
                                     {errors.name && (
-                                        <div style={{color: 'red'}}>{errors.name}</div>
+                                        <div
+                                            style={{
+                                                color: "red",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            {errors.name}
+                                        </div>
                                     )}
                                     <input
                                         type="text"
@@ -104,7 +111,14 @@ const TestForm = (props: any) => {
                                         onChange={handleChange}
                                     />
                                     {errors.color && (
-                                        <div style={{color: 'red'}}>{errors.color}</div>
+                                        <div
+                                            style={{
+                                                color: "red",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            {errors.color}
+                                        </div>
                                     )}
                                     {/* <button className="text-white bg-red-500 rounded p-2 px-4 hover:bg-red-600 font-bold">
                                         Delete set
