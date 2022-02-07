@@ -15,7 +15,6 @@
         <table>
           <thead>
             <tr>
-              <th>ID</th>
               <th>NAME</th>
               <th>COLOR</th>
             </tr>
@@ -23,7 +22,6 @@
           <tbody>
             @foreach($submittedData as $data)
             <tr>
-              <td>{{$data->id}}</td>
               <td>{{$data->name}}</td>
               <td>{{$data->color}}</td>
             </tr>

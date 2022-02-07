@@ -48,11 +48,9 @@ class SimpleTestController extends Controller
 
     public function reademail()
     {
-        $submittedData = UserData::all();        
+        $submittedData = UserData::all();     
         
-        Mail::send('emails.submitted', compact('submittedData'), function($message){
-            $message->to('reciver email', 'TestMail')->subject('Submitted data');
-        });
-        return view('emails.submitted', compact('submittedData'));
+        Mail::to('reciver email')->send(new \App\Mail\SendSubmittedData($submittedData));
+        dd("Mail Send Successfully...!");
     }
 }

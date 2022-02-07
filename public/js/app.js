@@ -2390,7 +2390,9 @@ var TestForm = function TestForm(props) {
                   value: values.name || "",
                   onChange: handleChange
                 }, void 0), errors.name && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", __assign({
-                  id: "feedback"
+                  style: {
+                    color: 'red'
+                  }
                 }, {
                   children: errors.name
                 }), void 0), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
@@ -2401,7 +2403,9 @@ var TestForm = function TestForm(props) {
                   value: values.color || "",
                   onChange: handleChange
                 }, void 0), errors.color && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", __assign({
-                  id: "feedback"
+                  style: {
+                    color: 'red'
+                  }
                 }, {
                   children: errors.color
                 }), void 0)]
@@ -2424,8 +2428,6 @@ var TestForm = function TestForm(props) {
           children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("thead", {
             children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
               children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
-                children: "ID"
-              }, void 0), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
                 children: "NAME"
               }, void 0), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
                 children: "COLOR"
@@ -2437,8 +2439,6 @@ var TestForm = function TestForm(props) {
             children: datas.map(function (data) {
               return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
                 children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
-                  children: data.id
-                }, void 0), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
                   children: data.name
                 }, void 0), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
                   children: data.color
@@ -2477,8 +2477,8 @@ var TestForm = function TestForm(props) {
     var errors = {};
 
     if (!values.name && !values.color) {
-      errors.name = "Required";
-      errors.color = "Required";
+      errors.name = "* Required";
+      errors.color = "* Required";
     } else if (!/^[A-Za-z]/.test(values.name)) {
       errors.name = "Name Must Be a String";
     } else if (!/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(values.color)) {

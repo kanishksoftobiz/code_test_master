@@ -11,14 +11,17 @@ class SendSubmittedData extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $submittedData;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($submittedData)
     {
         //
+        $this->submittedData = $submittedData;
     }
 
     /**
@@ -28,6 +31,6 @@ class SendSubmittedData extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.submitted');
+        return $this->subject('Submitted data')->markdown('emails.submitted');
     }
 }

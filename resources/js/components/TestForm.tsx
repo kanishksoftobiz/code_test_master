@@ -80,7 +80,7 @@ const TestForm = (props: any) => {
                                         onChange={handleChange}
                                     />
                                     {errors.name && (
-                                        <div id="feedback">{errors.name}</div>
+                                        <div style={{color: 'red'}}>{errors.name}</div>
                                     )}
                                     <input
                                         type="text"
@@ -104,7 +104,7 @@ const TestForm = (props: any) => {
                                         onChange={handleChange}
                                     />
                                     {errors.color && (
-                                        <div id="feedback">{errors.color}</div>
+                                        <div style={{color: 'red'}}>{errors.color}</div>
                                     )}
                                     {/* <button className="text-white bg-red-500 rounded p-2 px-4 hover:bg-red-600 font-bold">
                                         Delete set
@@ -125,7 +125,6 @@ const TestForm = (props: any) => {
                     <table className="text-center">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>NAME</th>
                                 <th>COLOR</th>
                                 <th>ACTION</th>
@@ -134,7 +133,6 @@ const TestForm = (props: any) => {
                         <tbody>
                             {datas.map((data: any) => (
                                 <tr key={data.id}>
-                                    <td>{data.id}</td>
                                     <td>{data.name}</td>
                                     <td>{data.color}</td>
                                     <td>
@@ -168,8 +166,8 @@ export default withFormik({
         const errors: any = {};
 
         if (!values.name && !values.color) {
-            errors.name = "Required";
-            errors.color = "Required";
+            errors.name = "* Required";
+            errors.color = "* Required";
         } else if (!/^[A-Za-z]/.test(values.name)) {
             errors.name = "Name Must Be a String";
         } else if (!/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(values.color)) {
